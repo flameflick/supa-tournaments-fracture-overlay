@@ -1,0 +1,33 @@
+.base-map {
+    display: flex;
+    
+    &__image {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+
+        margin-right: 1em;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        white-space: nowrap;
+
+        &-name {
+            font-weight: bold;
+        }
+
+        &-entry {
+            margin-bottom: 0.1em;
+
+            &-title {
+                font-weight: 500;
+            }
+
+            &-description {
+
+            }
+        }
+    }
+}

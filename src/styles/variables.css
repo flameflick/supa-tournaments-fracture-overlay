@@ -1,0 +1,14 @@
+:root {
+    --typography-main: #FFFFFF;
+    --typography-muted: #858789;
+    --typography-gradient: linear-gradient(268.83deg, var(--vubai-colors-brand-300) -40.68%, var(--vubai-colors-white) 55.58%, var(--vubai-colors-black) 132.77%);
+
+    --accent: #EABC4C;
+    --red: #FD0126;
+	--green: #58FA52;
+
+    --background-main: #0B0F14;
+	--background-section: #151515;
+
+    --sidebar-width: 300px;
+}
