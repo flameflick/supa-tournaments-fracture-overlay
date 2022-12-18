@@ -7,7 +7,7 @@ import { BaseMap } from '@/components/BaseMap'
 
 export const BaseFooter = () => {
   const [hash, setHash] = useState<null | string>(
-    '6bd8d61cb7451b2532cf6379a607707d406b9bc5'
+    'c80463d4041f580e3f6465a3022cb94480685629'
   )
 
   return (
@@ -16,20 +16,7 @@ export const BaseFooter = () => {
 
       <section className={styles['base-footer__info']}>
         <BaseMarquee gradientWidth={100}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
-          metus et nisi vulputate, quis hendrerit turpis blandit. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit. Duis congue nisi leo, non
-          laoreet diam imperdiet ut. Proin ultricies viverra elit nec efficitur.
-          Vivamus eget pulvinar lacus. Duis urna diam, ultricies mattis posuere
-          et, fermentum in erat. Suspendisse augue purus, fringilla quis lacus
-          vitae, commodo tincidunt nisl. Integer pretium augue nec orci maximus,
-          in condimentum erat ultrices. Quisque iaculis consequat nulla at
-          fringilla. Nulla at venenatis augue, eget gravida felis. Nullam rutrum
-          ipsum a mauris rutrum, sit amet tempor ligula placerat. Phasellus eu
-          odio pellentesque, tempor velit nec, consectetur lorem. Proin faucibus
-          et purus vitae porta. Etiam pulvinar commodo purus eu rutrum. Quisque
-          eu imperdiet purus. In elementum placerat dui, dapibus varius sapien
-          mollis vel.
+          Team 1: 4558617, 5018049, 5428872 | Team 2: 4141946, 1998001, 5034731 | Team 3: 9036984, 7101590, 3195971 | Team 4: 2781573, 5275299, 60014 | Team 5: 8737519, 95729, 8710711 | Team 6: 2406105, 657415, 6996359 | Team 7: 9072722, 6862514, 1876983 | Team 8: 3074092, 7395673, 320909 | Team 9: 9390846, 8538486, 4536664 | Team 10: 2631451, 3784079, 9582937 |
         </BaseMarquee>
       </section>
     </footer>

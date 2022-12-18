@@ -6,15 +6,27 @@
     align-items: flex-start;
     justify-content: space-between;
     padding: 20px;
+    padding-right: 40px;
 
     width: calc(100% - var(--sidebar-width));
     height: 140px;
 
     background-color: var(--background-section);
 
-
     &__info {
         display: flex;
         margin-left: 100px;
+    }
+
+    &::after {
+        content: '';
+        width: 50px;
+        height: 140px;
+
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent 40%, rgb(18, 18, 18) 90%);
+
     }
 }

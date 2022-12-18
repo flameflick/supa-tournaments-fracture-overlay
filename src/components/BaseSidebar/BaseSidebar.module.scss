@@ -1,0 +1,21 @@
+.base-sidebar {
+    position: absolute;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    width: var(--sidebar-width);
+    height: 100%;
+
+    padding: 20px;
+
+    background-color: var(--background-section-alt);
+
+    &__title {
+        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        font-size: 1.5em;
+    }
+}

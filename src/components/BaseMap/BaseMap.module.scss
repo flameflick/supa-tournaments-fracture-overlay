@@ -16,13 +16,19 @@
 
         &-name {
             font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            
+            // I love Camellia - Superluminal Absolutely EXTRA-TONE-ordinary "Bumpy Ride" (Shredding Whole Your Belonging Space-Time System At The Speed of 1,600 Times the CO)
+            text-overflow: ellipsis;
+            max-width: 600px;
+            overflow: hidden;
         }
 
         &-entry {
             margin-bottom: 0.1em;
 
             &-title {
-                font-weight: 500;
+                font-weight: 700;
             }
 
             &-description {
