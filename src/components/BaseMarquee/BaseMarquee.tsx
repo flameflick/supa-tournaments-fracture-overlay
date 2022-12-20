@@ -20,6 +20,7 @@ export const BaseMarquee = (props: IBaseMarqueeProps) => {
         }}
         gradientWidth={`${props.gradientWidth ?? 50}px`}
         gradientColor={[35, 35, 35]}
+        speed={12}
       >
         { props.children }
       </Marquee>

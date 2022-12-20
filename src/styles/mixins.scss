@@ -1,0 +1,40 @@
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@mixin typography-background-fill {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+@mixin typography-background-fill-animate {
+  background-size: 500% 500%;
+	animation: gradient 20s infinite;
+}
+
+@mixin purple-accent-gradient-typography-fill {
+  background: linear-gradient(270deg, #5D0096 33.7%, #AE4CEA 66.59%);
+  @include typography-background-fill;
+}
+
+@mixin purple-gradient-typography-fill {
+  background: linear-gradient(90deg, #0A080C -30.66%, #D3D3D3 49.75%, #7E00AA 105.24%);
+  @include typography-background-fill;
+}
+
+@mixin yellow-gradient-typography-fill {
+  background: linear-gradient(90deg, #08080C 28.78%, #D3D3D3 51.69%, #EABC4C 70.28%);
+  @include typography-background-fill;
+}
+
+// @import '../../styles/mixins.scss';
