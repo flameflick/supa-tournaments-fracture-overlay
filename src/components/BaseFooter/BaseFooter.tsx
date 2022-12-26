@@ -5,14 +5,14 @@ import styles from './BaseFooter.module.scss'
 import { BaseMarquee } from '@/components/BaseMarquee'
 import { BaseMap } from '@/components/BaseMap'
 
-export const BaseFooter = () => {
-  const [hash, setHash] = useState<null | string>(
-    'c80463d4041f580e3f6465a3022cb94480685629'
-  )
+type Props = {
+  songHash: string | null
+}
 
+export const BaseFooter = (props: Props) => {
   return (
     <footer className={styles['base-footer']}>
-      <BaseMap mapHash={hash} />
+      <BaseMap mapHash={props.songHash} />
 
       <section className={styles['base-footer__info']}>
         <BaseMarquee gradientWidth={100}>

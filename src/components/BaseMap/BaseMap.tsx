@@ -21,7 +21,7 @@ export const BaseMap = (props: IBaseMapProps) => {
 
   return (
     <div className={styles['base-map']}>
-      <img className={styles['base-map__image']} src={`https://eu.cdn.beatsaver.com/${props.mapHash}.jpg`}/>
+      <img className={styles['base-map__image']} src={`https://eu.cdn.beatsaver.com/${props.mapHash?.toLowerCase()}.jpg`}/>
 
       <div className={styles['base-map__info']}>
         <h2 className={styles['base-map__info-name']}>{ mapResult?.name }</h2>

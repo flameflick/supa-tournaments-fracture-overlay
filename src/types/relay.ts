@@ -14,6 +14,12 @@ export type RelayUser = {
     playState: Models.User.PlayStates
 }
 
+export type RelaySong = {
+    difficulty: number
+    id: string
+    name: string
+}
+
 export type RelayScore = Packets.Push.RealtimeScore['toObject']
 
 export type RealtimeScoreRelayPacket = {
@@ -23,6 +29,15 @@ export type RealtimeScoreRelayPacket = {
     user: RelayUser
 }
 
+export type MatchRelayPacket = {
+    type: 'match'
+
+    coordinator: string
+
+    players: RelayUser[]
+    song: RelaySong
+}
+
 export type SetTeamsToDisplayRelayPacket = {
     type: 'setTeamsToDisplay'
 
@@ -30,6 +45,6 @@ export type SetTeamsToDisplayRelayPacket = {
     team2: string
 }
 
-export type RelayPacket = RealtimeScoreRelayPacket | SetTeamsToDisplayRelayPacket
+export type RelayPacket = RealtimeScoreRelayPacket | SetTeamsToDisplayRelayPacket | MatchRelayPacket
 
 export type RelayPacketResolvers = Record<RelayPacket['type'], Function>
