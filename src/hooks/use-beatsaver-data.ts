@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'
 import wretch from 'wretch'
 
 import { IBeatSaverMapDetail } from '../types/beatsaver'
