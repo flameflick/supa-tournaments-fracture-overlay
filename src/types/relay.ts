@@ -20,7 +20,7 @@ export type RelaySong = {
     name: string
 }
 
-export type RelayScore = Packets.Push.RealtimeScore['toObject']
+export type RelayScore = ReturnType<Packets.Push.RealtimeScore['toObject']>
 
 export type RealtimeScoreRelayPacket = {
     type: 'score'
