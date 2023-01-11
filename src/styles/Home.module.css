@@ -1,0 +1,99 @@
+.main-streams {
+    display: flex;
+    position: relative;
+
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - var(--sidebar-width));
+    height: calc(100vh - 140px);
+    padding: 20px 20px;
+
+    &__team {
+        &-wrapper {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        &-badge {
+            position: absolute;
+            bottom: -20px;
+            left: 30px;
+
+            min-width: 250px;
+
+            font-weight: 500;
+            font-family: Poppins;
+            font-size: 24px;
+            padding: 4px 12px;
+            padding-left: 65px;
+            background-color: var(--background-section-alt);
+
+            box-shadow: var(--uplift-shadow);
+            border: 2px solid var(--accent);
+            border-radius: 6px;
+
+            &-image {
+                width: 90px;
+                height: 90px;
+                border: 2px solid var(--accent);
+                border-radius: 50%;
+
+                position: absolute;
+                left: -40px;
+                bottom: -2px;
+
+                &_team-bottom {
+                    bottom: unset;
+                    top: -2px;
+                }
+            }
+
+            &_team-bottom {
+                top: -20px;
+                bottom: unset;
+            }
+        }
+    }
+
+    &__casters-placeholder {
+        width: 450px;
+        height: 250px;
+    
+        background-color: black;
+        border: 2px dashed white;
+        border-radius: 2rem;
+        font-size: 1.5rem;
+
+        align-self: center;
+
+        grid-area: b;
+        align-self: center;
+        justify-self: center;
+    }
+
+    &__middle-info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+        
+        display: grid; 
+        grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-rows: 1fr; 
+        grid-template-areas: 
+            'a b c'; 
+
+        z-index: 2;
+    }
+
+    &__main-logo {
+        width: 250px;
+        grid-area: c;
+        align-self: center;
+        justify-self: center;
+    }
+}
