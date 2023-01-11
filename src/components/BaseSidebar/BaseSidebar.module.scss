@@ -19,4 +19,13 @@
         text-align: center;
         font-size: 1.5em;
     }
+
+    &__entities {
+        &-list {
+            list-style: none;
+        }
+
+        &-item {
+        }
+    }
 }

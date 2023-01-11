@@ -1,0 +1,60 @@
+.base-iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__wrapper {
+        position: relative;
+        width: 570px;
+        height: 345px;
+        overflow: hidden;
+        border: 2px solid black;
+    }
+
+    &__score {
+        position: absolute;
+        inset: 0;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0.5rem;
+        text-shadow: 1px 1px 10px black;
+
+        &-user {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+
+            &-avatar {
+                width: 40px;
+                height: 40px;
+                border: 2px solid white;
+                border-radius: 50%;
+                margin-right: 6px;
+            }
+
+            &-info {
+                font-weight: 700;
+            }
+
+
+            &-badges {
+                display: flex;
+            }
+        }
+
+        &-trackers {
+            text-align: right;
+        
+            &-combo {
+
+            }
+
+            &-accuracy {
+
+            }
+        }
+    }
+}
