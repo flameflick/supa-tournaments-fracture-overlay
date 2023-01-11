@@ -1,5 +1,28 @@
 .base-map {
     display: flex;
+    align-items: center;
+    position: relative;
+    padding: 8px;
+    padding-right: 24px;
+    border: 1px solid var(--background-section-alt);
+    border-radius: 8px;
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        height: 115px;
+        filter: blur(1px);
+        border-radius: 8px;
+        background-size: cover !important;
+    }
+
+    &__wrapper {
+        position: relative;
+        z-index: 1;
+        display: flex;
+    }
+
     
     &__image {
         width: 100px;
@@ -13,27 +36,58 @@
         display: flex;
         flex-direction: column;
         white-space: nowrap;
+        padding: 6px 0;
+
+        &-chore {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        &-badge {
+            font-family: 'Poppins', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            font-weight: 500;
+            border-radius: 10px;
+
+            background-color: black;
+
+            svg {
+                margin-right: 0.3rem;
+            }
+        }
 
         &-name {
-            font-weight: bold;
+            font-size: 24px;
+            font-weight: medium;
             font-family: 'Montserrat', sans-serif;
             
             // I love Camellia - Superluminal Absolutely EXTRA-TONE-ordinary "Bumpy Ride" (Shredding Whole Your Belonging Space-Time System At The Speed of 1,600 Times the CO)
             text-overflow: ellipsis;
+            min-width: 400px;
             max-width: 600px;
             overflow: hidden;
         }
 
-        &-entry {
-            margin-bottom: 0.1em;
+        &-artist-name {
+            font-weight: normal;
+            font-size: 16px;
+            margin-bottom: 2px;
 
-            &-title {
-                font-weight: 700;
-            }
-
-            &-description {
+            &_require {
 
             }
+        }
+
+        &-mapper {
+        }
+
+        &-duration {
+            margin-left: auto;
+            font-weight: 700;
         }
     }
 }

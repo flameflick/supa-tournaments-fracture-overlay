@@ -5,41 +5,72 @@ import styles from './BaseMap.module.scss'
 import clsx from 'clsx'
 import { intervalToDuration, addSeconds, format } from 'date-fns'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDrum } from '@fortawesome/free-solid-svg-icons'
+
+import MetronomeIcon from '@/assets/metronome.svg'
+import StandardSabersIcon from '@/assets/standard-sabers.svg'
+
 import { useBeatSaverMap } from '@/hooks/use-beatsaver-data'
 
 interface IBaseMapProps {
   mapHash: string | null
+  selectedDifficulty: string | null
+
   children?: React.ReactNode
 }
 
 const zeroPad = (n: number) => String(n).padStart(2, '0')
 
-export const BaseMap = (props: IBaseMapProps) => {
-  const { map: mapResult } = useBeatSaverMap(props.mapHash)
+const shortDiffNameMap: Record<string, string> = {
+  'easy': 'Easy',
+  'normal': 'Normal',
+  'hard': 'Hard',
+  'expert': 'Expert',
+  'expertplus': 'Expert+'
+}
 
-  const mapDuration = mapResult ? format(addSeconds(new Date(0), mapResult.metadata.duration), 'm:ss') : '';
+export const BaseMap = (props: IBaseMapProps) => {
+  const { map: mapResult } = useBeatSaverMap('6c4f86a126cd7465ec536837f3e73874e07068ef')
+
+  const mapDuration = mapResult ? format(addSeconds(new Date(0), mapResult.metadata.duration), 'm:ss') : ''
+  const previewImage = `https://eu.cdn.beatsaver.com/${'6c4f86a126cd7465ec536837f3e73874e07068ef'}.jpg`
 
   return (
     <div className={styles['base-map']}>
-      <img className={styles['base-map__image']} src={`https://eu.cdn.beatsaver.com/${props.mapHash?.toLowerCase()}.jpg`}/>
+      <div 
+        className={styles['base-map__bg']} 
+        style={{
+          background: `linear-gradient(90deg, rgba(14,14,14,0.9) 0%, rgba(14,14,14,0.9) 100%), url(${previewImage}) no-repeat center`
+        }}
+      ></div>
+      
+      <div className={styles['base-map__wrapper']}>
+        <img className={styles['base-map__image']} src={previewImage}/>
 
-      <div className={styles['base-map__info']}>
-        <h2 className={styles['base-map__info-name']}>{ mapResult?.name }</h2>
+        <div className={styles['base-map__info']}>
+          <h2 className={styles['base-map__info-artist-name']}>{ mapResult?.metadata.songAuthorName }</h2>
+          <h3 className={styles['base-map__info-name']}>{ mapResult?.metadata.songName} - {mapResult?.metadata.songSubName}</h3>
 
-        <p className={styles['base-map__info-entry']}>
-          <strong className={styles['base-map__info-entry-title']}>Mapper: </strong>
-          { mapResult?.metadata.levelAuthorName }
-        </p>
+          <div className={styles['base-map__info-chore']}>
+          { props.selectedDifficulty ? 
+            <span 
+              className={styles['base-map__info-badge']}
+              style={{
+                backgroundColor: `var(--difficulty-${props.selectedDifficulty}-color)`
+              }}
+            ><StandardSabersIcon fill="#ffffff" width="1.3rem" />{shortDiffNameMap[props.selectedDifficulty]}</span> 
+            : null }
 
-        <p className={styles['base-map__info-entry']}>
-          <strong className={styles['base-map__info-entry-title']}>BPM: </strong>
-          { mapResult?.metadata.bpm }
-        </p>
+            <span 
+              className={styles['base-map__info-badge']}
+            ><MetronomeIcon fill="#ffffff" width="1.3rem" />{ mapResult?.metadata.bpm }</span> 
 
-        <p className={styles['base-map__info-entry']}>
-          <strong className={styles['base-map__info-entry-title']}>Length: </strong>
-          { mapDuration }
-        </p>
+            <h4 className={styles['base-map__info-mapper']}>by { mapResult?.metadata.levelAuthorName }</h4>
+
+            <span className={styles['base-map__info-duration']}>{mapDuration}</span>
+          </div>
+        </div>
       </div>
     </div>
   )
