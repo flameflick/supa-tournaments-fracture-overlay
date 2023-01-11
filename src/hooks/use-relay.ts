@@ -4,6 +4,14 @@ import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsTo
 
 import { beatSaberLevelIdToHash } from '@/utils/beatsaver'
 
+const diffIdToNameMap: Record<number, string> = {
+    0: 'easy',
+    1: 'normal',
+    2: 'hard',
+    3: 'expert',
+    4: 'expertplus'
+}
+
 export const useRelay = () => {
     const [isConnected, setIsConnected] = useState<boolean>(false)
 
@@ -11,7 +19,9 @@ export const useRelay = () => {
     const [team2Id, setTeam2Id] = useState<null | string>(null)
 
     const [userScores, setUserScores] = useState<Record<string, RelayScore>>({})
+
     const [songHash, setSongHash] = useState<null | string>(null)
+    const [songDiff, setSongDiff] = useState<null | string>('easy')
 
     const resolvePacket = (packetData: RelayPacket) => {
         const resolvers: RelayPacketResolvers = {
@@ -31,15 +41,12 @@ export const useRelay = () => {
             },
 
             'match': (data: MatchRelayPacket) => {
-                console.log(data.song.id)
-                console.log(beatSaberLevelIdToHash(data.song.id))
-                setSongHash(beatSaberLevelIdToHash(data.song.id))
+                setSongHash(beatSaberLevelIdToHash(data.song?.id))
+                setSongDiff(diffIdToNameMap[data.song?.difficulty])
             }
         }
 
-        console.info(packetData);
-        if (!(packetData.type in resolvers)) return;
-
+        if (!(packetData.type in resolvers)) return
         resolvers[packetData.type](packetData)
     }
 
@@ -67,6 +74,7 @@ export const useRelay = () => {
 
         userScores,
 
-        songHash
+        songHash,
+        songDiff
     }
 }
