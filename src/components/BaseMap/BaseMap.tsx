@@ -31,10 +31,10 @@ const shortDiffNameMap: Record<string, string> = {
 }
 
 export const BaseMap = (props: IBaseMapProps) => {
-  const { map: mapResult } = useBeatSaverMap('6c4f86a126cd7465ec536837f3e73874e07068ef')
+  const { map: mapResult } = useBeatSaverMap(props.mapHash)
 
   const mapDuration = mapResult ? format(addSeconds(new Date(0), mapResult.metadata.duration), 'm:ss') : ''
-  const previewImage = `https://eu.cdn.beatsaver.com/${'6c4f86a126cd7465ec536837f3e73874e07068ef'}.jpg`
+  const previewImage = `https://eu.cdn.beatsaver.com/${props.mapHash?.toLowerCase()}.jpg`
 
   return (
     <div className={styles['base-map']}>

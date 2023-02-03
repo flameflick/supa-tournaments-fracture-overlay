@@ -10,7 +10,9 @@ export const getPlayerTwitchUsername = (platformId: string): string => {
     return streamLinkMap[platformId]
 }
 
-export const getTeamByUUID = (taUUID: string): ITeam | null => {
+export const getTeamByUUID = (taUUID: string | null): ITeam | null => {
+    if (!taUUID) return null
+
     const team = teamsConfig.find(i => i.id === taUUID)
     return team || null
 }

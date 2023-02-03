@@ -74,6 +74,7 @@ export const BasePlayerCard = (props: Props) => {
                     backgroundColor: i.color,
                     color: getContrastingColor(i.color)
                   }}
+                  key={i.id}
                 >
                   { i.tag }
                 </span>

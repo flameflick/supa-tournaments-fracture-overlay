@@ -45,6 +45,12 @@ export type SetTeamsToDisplayRelayPacket = {
     team2: string
 }
 
-export type RelayPacket = RealtimeScoreRelayPacket | SetTeamsToDisplayRelayPacket | MatchRelayPacket
+export type UserRelayPacket = {
+    type: 'user'
+
+    user: RelayUser
+}
+
+export type RelayPacket = RealtimeScoreRelayPacket | SetTeamsToDisplayRelayPacket | MatchRelayPacket | UserRelayPacket
 
 export type RelayPacketResolvers = Record<RelayPacket['type'], Function>

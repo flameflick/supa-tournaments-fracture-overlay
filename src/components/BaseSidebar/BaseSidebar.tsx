@@ -9,6 +9,7 @@ import type { RelayScore, RelayUser } from '@/types/relay'
 import { Reorder } from 'framer-motion'
 
 import { TeamWithCombinedScore } from '@/components/TeamWithCombinedScore'
+import { UserWithScore } from '@/components/UserWithScore'
 
 import { getTeamByUUID } from '@/utils/config'
 import { default as teamsConfig } from '@/configs/teams.json'
@@ -46,15 +47,19 @@ export const BaseSidebar = (props: IProps) => {
     team: getTeamByUUID(teamId),
     users
   })).sort((a, b) => 
-    b.users.reduce((k, j) => k + j.score.score!, 0) -
-    a.users.reduce((k, j) => k + j.score.score!, 0) 
+    b.users.reduce((k, j) => k + (j.score ? j.score.score! : 0), 0) -
+    a.users.reduce((k, j) => k + (j.score ? j.score.score! : 0), 0) 
   )
 
+  const users = Object.entries(props.users).map(([, user]) => user)
+
   const players = Object.entries(props.userScores).map(
-    ([, user]) => user
+    ([, score]) => ({ score, user: users.find(i => i.guid === score.user_guid) })
   ).sort(
-    (a, b) => b.score! - a.score!
+    (a, b) => b.score.score! - a.score.score!
   )
+
+  console.log(teams)
 
   return (
     <aside className={styles['base-sidebar']}>
@@ -74,8 +79,8 @@ export const BaseSidebar = (props: IProps) => {
       <h3 className={styles['base-sidebar__title']}>Player Leaderboard</h3>
       <Reorder.Group axis="y" className={styles['base-sidebar__entities-list']} onReorder={() => null} values={teamsConfig}>
         {players.map(i => 
-          <Reorder.Item className={teamStyles['score-team__container']} key={i.user_guid} value={i}>
-            { JSON.stringify(i) }
+          <Reorder.Item className={teamStyles['score-team__container']} key={i.user?.guid} value={i}>
+            <UserWithScore score={i.score} user={i.user!} />
           </Reorder.Item>
         )}
       </Reorder.Group>

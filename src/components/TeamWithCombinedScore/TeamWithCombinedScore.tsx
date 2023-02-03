@@ -30,11 +30,11 @@ export const TeamWithCombinedScore = (props: IProps) => {
   }
 
   const combinedAcc = ((props.scores.reduce(
-    (a, b) => a + b.accuracy!
+    (a, b) => a + (b ? b.accuracy! : 0)
   , 0) / TEAM_SIZE) * 100).toFixed(2)
 
   const fullComboCount = props.scores.filter(
-    i => (i.scoreTracker?.notesMissed! + i.scoreTracker?.bombHits!) === 0
+    i => i ? (i.scoreTracker?.notesMissed! + i.scoreTracker?.bombHits!) === 0 : false
   ).length
 
   const teamNameOverflows = team.name.length > 18

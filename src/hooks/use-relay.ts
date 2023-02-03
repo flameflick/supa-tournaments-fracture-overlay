@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket, RelayUser } from '@/types/relay'
+import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket, RelayUser, UserRelayPacket } from '@/types/relay'
 
 import { beatSaberLevelIdToHash } from '@/utils/beatsaver'
+import { getTeamByUUID } from '@/utils/config'
 
 const diffIdToNameMap: Record<number, string> = {
     0: 'easy',
@@ -15,14 +16,18 @@ const diffIdToNameMap: Record<number, string> = {
 export const useRelay = () => {
     const [isConnected, setIsConnected] = useState<boolean>(false)
 
-    const [team1Id, setTeam1Id] = useState<null | string>(null)
-    const [team2Id, setTeam2Id] = useState<null | string>(null)
+    const [team1Id, setTeam1Id] = useState<null | string>('9fec2903-3eb1-4995-8427-d0c7770337ae')
+    const [team2Id, setTeam2Id] = useState<null | string>('aa2296c4-3a67-458c-bc77-89b1346b465a')
 
     const [userScores, setUserScores] = useState<Record<string, RelayScore>>({})
     const [users, setUsers] = useState<Record<string, RelayUser>>({})
 
     const [songHash, setSongHash] = useState<null | string>(null)
     const [songDiff, setSongDiff] = useState<null | string>('easy')
+
+    const team1 = getTeamByUUID(team1Id)
+    console.log(team1, team1Id)
+    const team2 = getTeamByUUID(team2Id)
 
     const resolvePacket = (packetData: RelayPacket) => {
         const resolvers: RelayPacketResolvers = {
@@ -38,6 +43,7 @@ export const useRelay = () => {
             },
 
             'setTeamsToDisplay': (data: SetTeamsToDisplayRelayPacket) => {
+                console.log(data)
                 setTeam1Id(data.team1)
                 setTeam2Id(data.team2)
             },
@@ -45,6 +51,14 @@ export const useRelay = () => {
             'match': (data: MatchRelayPacket) => {
                 setSongHash(beatSaberLevelIdToHash(data.song?.id))
                 setSongDiff(diffIdToNameMap[data.song?.difficulty])
+            },
+
+            'user': (data: UserRelayPacket) => {
+                console.log('new user pog')
+                
+                const newUser = structuredClone(data.user)
+
+                setUsers(oldUsers => ({...oldUsers, [newUser.platformId]: newUser}))
             }
         }
 
@@ -71,8 +85,8 @@ export const useRelay = () => {
     }, [])
 
     return {
-        team1Id,
-        team2Id,
+        team1,
+        team2,
 
         userScores,
         users,

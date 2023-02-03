@@ -23,7 +23,7 @@ export const TeamWithMembers = (props: IProps) => {
         <h2 className={styles['team__name']}>{ team.name }</h2>
         <p className={styles['team__members']}>
           { team.members.map(i => 
-            <span className={styles['team__member']}>
+            <span className={styles['team__member']} key={i.platformId}>
               { i.countryCode ? <img 
                 src={toTwemojiFlag(i.countryCode)}
                 className={styles['team__member-flag']}
