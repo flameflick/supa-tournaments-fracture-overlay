@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket } from '@/types/relay'
+import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket, RelayUser } from '@/types/relay'
 
 import { beatSaberLevelIdToHash } from '@/utils/beatsaver'
 
@@ -19,6 +19,7 @@ export const useRelay = () => {
     const [team2Id, setTeam2Id] = useState<null | string>(null)
 
     const [userScores, setUserScores] = useState<Record<string, RelayScore>>({})
+    const [users, setUsers] = useState<Record<string, RelayUser>>({})
 
     const [songHash, setSongHash] = useState<null | string>(null)
     const [songDiff, setSongDiff] = useState<null | string>('easy')
@@ -26,12 +27,13 @@ export const useRelay = () => {
     const resolvePacket = (packetData: RelayPacket) => {
         const resolvers: RelayPacketResolvers = {
             'score': (data: RealtimeScoreRelayPacket) => {
-                const newScores = { ...userScores }
-
-                console.log(newScores, data.user.platformId)
+                const newScores = structuredClone(userScores)
+                const newUsers = structuredClone(users)
 
                 newScores[data.user.platformId] = data.score
-
+                newUsers[data.user.platformId] = data.user
+                
+                setUsers(oldUsers => ({...oldUsers, ...newUsers}))
                 setUserScores(oldScores => ({...oldScores, ...newScores}))
             },
 
@@ -73,6 +75,7 @@ export const useRelay = () => {
         team2Id,
 
         userScores,
+        users,
 
         songHash,
         songDiff

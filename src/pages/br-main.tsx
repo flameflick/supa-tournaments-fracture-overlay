@@ -17,6 +17,7 @@ export default function Home() {
     team2Id,
 
     userScores,
+    users,
 
     songHash,
     songDiff
@@ -26,13 +27,13 @@ export default function Home() {
     <main>
       <section className={styles['main-streams']}>
         <div className={styles['main-streams__team-wrapper']}>
-          <BasePlayerCard userId={'76561198167372371'}  muted={false}/>
+          <BasePlayerCard userId={'76561198988695829'}  muted={false}/>
           <BasePlayerCard userId={'76561198167372371'} />
           <BasePlayerCard userId={'76561198167372371'} />
 
           <div className={styles['main-streams__team-badge']}>
-            <img className={styles['main-streams__team-badge-image']} src={'https://i.imgur.com/mKhEnCZ.png'}/>
-            { 'joe biden\'s last 3 brain cells' }
+            <img className={styles['main-streams__team-badge-image']} src={'https://i.imgur.com/b4pEEYm.png'}/>
+            { 'Tseska\'s Household Appliances' }
           </div>
         </div>
 
@@ -49,7 +50,7 @@ export default function Home() {
         
 
         <div className={styles['main-streams__team-wrapper']}>
-          <BasePlayerCard userId={'76561198167372371'} scoreTrackerPosition='bottom' />
+          <BasePlayerCard userId={'76561198204808809'} scoreTrackerPosition='bottom' />
           <BasePlayerCard userId={'76561198167372371'} scoreTrackerPosition='bottom' />
           <BasePlayerCard userId={'76561198167372371'} scoreTrackerPosition='bottom' />
 
@@ -63,7 +64,7 @@ export default function Home() {
       
       <BaseFooter songHash={songHash} selectedDifficulty={songDiff}/>
 
-      <BaseSidebar userScores={userScores} />
+      <BaseSidebar userScores={userScores} users={users} />
     </main>
   )
 }

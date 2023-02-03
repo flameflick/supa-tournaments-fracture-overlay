@@ -5,6 +5,8 @@ import styles from './BasePlayerCard.module.scss'
 import { RelayScore, RelayUser } from '@/types/relay'
 import { useScoreSaberPlayer } from '@/hooks/use-scoresaber'
 import { useBeatLeaderPlayer } from '@/hooks/use-beatleader'
+import { getContrastingColor } from '@/utils/colors'
+import { getPlayerTwitchUsername } from '@/utils/config'
 
 type Props = {
   userId: string
@@ -18,16 +20,26 @@ const scorePositionMap = {
   'bottom': 'flex-end'
 }
 
+const scoreShadowOffsetMap = {
+  'top': '100px',
+  'bottom': '-100px'
+}
+
 export const BasePlayerCard = (props: Props) => {
-  const playerTwitchName = 'bread1_0'
+  const playerTwitchName = getPlayerTwitchUsername(props.userId)
 
   const {
     player: scoreSaberResult
   } = useScoreSaberPlayer(props.userId)
 
-  // const {
-  //   player: beatLeaderResult
-  // } = useBeatLeaderPlayer(props.userId)
+  const {
+    player: beatLeaderResult
+  } = useBeatLeaderPlayer(props.userId)
+
+  const getNameWithoutClans = (name: string) => {
+    const nameParts = name.split('|')
+    return nameParts[nameParts.length - 1]
+  }
 
   return (
     <div className={styles['base-iframe__wrapper']}>
@@ -41,7 +53,8 @@ export const BasePlayerCard = (props: Props) => {
       <div 
         className={styles['base-iframe__score']}
         style={{
-          alignItems: scorePositionMap[props.scoreTrackerPosition || 'top']
+          alignItems: scorePositionMap[props.scoreTrackerPosition || 'top'],
+          boxShadow: `0px ${scoreShadowOffsetMap[props.scoreTrackerPosition || 'top']} 100px -89px black inset`
         }}
       >
         <div className={styles['base-iframe__score-user']}>
@@ -51,12 +64,21 @@ export const BasePlayerCard = (props: Props) => {
           />
            
           <div className={styles['base-iframe__score-user-info']}>
-            {scoreSaberResult?.name}
+            { scoreSaberResult?.name && getNameWithoutClans(scoreSaberResult?.name) }
 
-            {/* <div className={styles['base-iframe__score-user-badges']}>
-              <div className={styles['base-iframe__score-user-badge']}>SS {scoreSaberResult?.rank}</div>
-              <div className={styles['base-iframe__score-user-badge']}>BL {beatLeaderResult?.rank}</div>
-            </div> */}
+            <p className={styles['base-iframe__score-user-clans']}>
+              { beatLeaderResult?.clans.map(i => 
+                <span 
+                  className={styles['base-iframe__score-user-clan']}
+                  style={{
+                    backgroundColor: i.color,
+                    color: getContrastingColor(i.color)
+                  }}
+                >
+                  { i.tag }
+                </span>
+              ) }
+            </p>
           </div>
         </div>
 

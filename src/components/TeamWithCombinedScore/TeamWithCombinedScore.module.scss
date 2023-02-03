@@ -1,0 +1,61 @@
+.score-team {
+    display: flex;
+    align-items: center;
+
+    padding: 0 .3rem;
+
+    width: 272px;
+    height: 47px;
+
+    &__logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+
+        box-shadow: var(--uplift-shadow);
+    }
+
+    &__name {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 1.2rem;
+        max-width: 150px;
+    }
+
+    &__score-tracker {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 0.8rem;
+
+        margin-left: auto;
+
+        &-acc {
+        }
+
+        &-fcs {
+            font-weight: 500;
+        }
+    }
+
+    &__container {
+        background-color: #323232;
+        border-radius: 5px;
+
+        &:nth-child(1) {
+            background: linear-gradient(89.96deg, #EFB607 0.03%, #323232 99.42%);
+        }
+
+        &:nth-child(2) {
+            background: linear-gradient(90deg, #E6E6E6 0%, #323232 99.42%);
+        }
+
+        &:nth-child(3) {
+            background: linear-gradient(90deg, #C47833 0%, #323232 99.42%);
+        }
+
+        &:not(:last-child) {
+            margin-bottom: .8rem;
+        }
+    }
+}

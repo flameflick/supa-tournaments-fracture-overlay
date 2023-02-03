@@ -4,7 +4,7 @@
 
     display: flex;
     align-items: center;
-    padding: 1rem;
+    overflow: hidden;
     justify-content: space-between;
     padding-right: 40px;
 
@@ -16,8 +16,7 @@
     &__info {
         display: flex;
         align-items: flex-start;
-        height: 100%;
-        margin-left: 100px;
+        margin-left: 30px;
     }
 
     &::after {

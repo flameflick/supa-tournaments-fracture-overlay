@@ -1,11 +1,17 @@
 export interface IBeatLeaderUser {
-    id: string,
-    name: string,
-    platform: string,
-    avatar: string,
-    country: string,
-    pp: number,
-    rank: number,
-    countryRank: number,
+    id: string
+    name: string
+    platform: string
+    avatar: string
+    country: string
+    pp: number
+    rank: number
+    countryRank: number
     role: string
+
+    clans: {
+        id: number
+        tag: string
+        color: string
+    }[]
 }

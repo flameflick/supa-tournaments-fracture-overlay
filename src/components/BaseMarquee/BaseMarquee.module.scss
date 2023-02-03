@@ -6,8 +6,14 @@
         position: relative;
         display: block;
         background-color: rgb(35, 35, 35);
-        border-radius: 0.3em;
+        border-radius: 1em;
 
-        padding: 0.5rem;
+        &_hollow {
+            background-color: transparent;
+        }
+    }
+
+    &__container {
+        border-radius: 8px;
     }
 }

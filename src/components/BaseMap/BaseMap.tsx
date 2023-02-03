@@ -68,7 +68,7 @@ export const BaseMap = (props: IBaseMapProps) => {
 
             <h4 className={styles['base-map__info-mapper']}>by { mapResult?.metadata.levelAuthorName }</h4>
 
-            <span className={styles['base-map__info-duration']}>{mapDuration}</span>
+            <span className={styles['base-map__info-duration']}>{mapResult?.id}</span>
           </div>
         </div>
       </div>

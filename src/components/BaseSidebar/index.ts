@@ -1,1 +1,1 @@
-export * from "./BaseSidebar"
+export * from './BaseSidebar'
