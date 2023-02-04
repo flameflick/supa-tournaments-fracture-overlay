@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket, RelayUser, UserRelayPacket } from '@/types/relay'
+import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket, RelayUser, UserRelayPacket, TeamPointsPacket, RelayTeamWithPoints, UserLeftRelayPacket } from '@/types/relay'
 
 import { beatSaberLevelIdToHash } from '@/utils/beatsaver'
 import { getTeamByUUID } from '@/utils/config'
@@ -26,8 +26,9 @@ export const useRelay = () => {
     const [songDiff, setSongDiff] = useState<null | string>('easy')
 
     const team1 = getTeamByUUID(team1Id)
-    console.log(team1, team1Id)
     const team2 = getTeamByUUID(team2Id)
+
+    const [teamPoints, setTeamPoints] = useState<null | RelayTeamWithPoints[]>(null)
 
     const resolvePacket = (packetData: RelayPacket) => {
         const resolvers: RelayPacketResolvers = {
@@ -51,15 +52,29 @@ export const useRelay = () => {
             'match': (data: MatchRelayPacket) => {
                 setSongHash(beatSaberLevelIdToHash(data.song?.id))
                 setSongDiff(diffIdToNameMap[data.song?.difficulty])
+
+                setUsers(_ => {
+                    const newUsers: Record<string, RelayUser> = {}
+
+                    for (const player of data.players) {
+                        newUsers[player.platformId] = player
+                    }
+
+                    return newUsers
+                })
             },
 
             'user': (data: UserRelayPacket) => {
-                console.log('new user pog')
-                
                 const newUser = structuredClone(data.user)
 
                 setUsers(oldUsers => ({...oldUsers, [newUser.platformId]: newUser}))
-            }
+            },
+
+            'points': (data: TeamPointsPacket) => {
+                setTeamPoints(data.teams)
+            },
+
+            'userLeft': (data: UserLeftRelayPacket) => {}
         }
 
         if (!(packetData.type in resolvers)) return
@@ -87,6 +102,8 @@ export const useRelay = () => {
     return {
         team1,
         team2,
+
+        teamPoints,
 
         userScores,
         users,

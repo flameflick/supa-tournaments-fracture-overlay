@@ -1,10 +1,10 @@
-import React, { ReactPropTypes, forwardRef, createRef } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import styles from './BaseSidebar.module.scss'
 import teamStyles from '@/components/TeamWithCombinedScore/TeamWithCombinedScore.module.scss'
 import clsx from 'clsx'
 
-import type { RelayScore, RelayUser } from '@/types/relay'
+import type { RelayScore, RelayUser, RelayTeamWithPoints } from '@/types/relay'
 
 import { Reorder } from 'framer-motion'
 
@@ -19,13 +19,19 @@ interface IProps {
 
   userScores: Record<string, RelayScore>
   users: Record<string, RelayUser>
+  teamPoints: RelayTeamWithPoints[] | null
 }
 
 export const BaseSidebar = (props: IProps) => {
-  const scores = Object.entries(props.userScores).sort(
-    ([, scoreA], [, scoreB]) => scoreB.accuracy! - scoreA.accuracy!
-  )
+  const [teamLeaderboardType, setTeamLeaderboardType] = useState<'score' | 'points'>('score')
 
+  const scores = Object.entries(props.userScores)
+    .sort(
+      ([, scoreA], [, scoreB]) => scoreB.accuracy! - scoreA.accuracy!
+    )
+
+  // I still can't figure out why I decided to store everything 
+  // in id => value Maps. Holy shit the next 50 lines is a trainwreck
   const teamsMap: Record<string, {
     user: RelayUser
     score: RelayScore
@@ -43,28 +49,49 @@ export const BaseSidebar = (props: IProps) => {
     ]
   }
 
-  const teams = Object.entries(teamsMap).map(([teamId, users]) => ({
-    team: getTeamByUUID(teamId),
-    users
-  })).sort((a, b) => 
-    b.users.reduce((k, j) => k + (j.score ? j.score.score! : 0), 0) -
-    a.users.reduce((k, j) => k + (j.score ? j.score.score! : 0), 0) 
-  )
+  const teams = Object.entries(teamsMap)
+    .map(([teamId, users]) => ({
+      team: getTeamByUUID(teamId),
+      users
+    })).sort((a, b) => 
+      b.users.reduce((k, j) => k + (j.score ? j.score.score! : 0), 0) -
+      a.users.reduce((k, j) => k + (j.score ? j.score.score! : 0), 0) 
+    )
 
-  const users = Object.entries(props.users).map(([, user]) => user)
+  const users = Object.entries(props.users)
+    .map(([, user]) => user)
 
-  const players = Object.entries(props.userScores).map(
-    ([, score]) => ({ score, user: users.find(i => i.guid === score.user_guid) })
-  ).sort(
-    (a, b) => b.score.score! - a.score.score!
-  )
+  const players = Object.entries(props.userScores)
+    .map(
+      ([, score]) => (
+        { 
+          score, 
+          user: users.find(i => i.guid === score.user_guid) 
+        })
+    ).sort(
+      (a, b) => b.score.score! - a.score.score!
+    )
+   
+  // When point update hits the WS client, switch team leaderboard
+  // to display current points instead of acc for 30 seconds
+  useEffect(() => {
+    const switchTeamLeaderboard = () => {
+      setTeamLeaderboardType(type => 
+        type === 'score' ? 'points' : 'score'
+      )
+    }
 
-  console.log(teams)
+    switchTeamLeaderboard()
+
+    setTimeout(switchTeamLeaderboard, 30_000)
+  }, [ props.teamPoints ])
 
   return (
     <aside className={styles['base-sidebar']}>
-      <h3 className={styles['base-sidebar__title']}>Team Leaderboard</h3>
-      <Reorder.Group axis="y" className={styles['base-sidebar__entities-list']} onReorder={() => null} values={teamsConfig}>
+      <h3 className={styles['base-sidebar__title']}>Team Leaderboard {teamLeaderboardType}</h3>
+      <Reorder.Group axis="y" className={
+        clsx(styles['base-sidebar__entities-list'], 
+        )} onReorder={() => null} values={teamsConfig}>
         {teams.splice(0, 10).map(i => 
           <Reorder.Item className={teamStyles['score-team__container']} key={i.team?.id} value={i.team}>
             <TeamWithCombinedScore 
@@ -78,7 +105,7 @@ export const BaseSidebar = (props: IProps) => {
 
       <h3 className={styles['base-sidebar__title']}>Player Leaderboard</h3>
       <Reorder.Group axis="y" className={styles['base-sidebar__entities-list']} onReorder={() => null} values={teamsConfig}>
-        {players.map(i => 
+        {players.filter(i => i.user).map(i => 
           <Reorder.Item className={teamStyles['score-team__container']} key={i.user?.guid} value={i}>
             <UserWithScore score={i.score} user={i.user!} />
           </Reorder.Item>

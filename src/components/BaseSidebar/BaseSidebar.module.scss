@@ -43,5 +43,7 @@
         right: 0;
         bottom: 0;
         background: linear-gradient(180deg, transparent 40%, rgb(18, 18, 18) 90%);
+
+        z-index: 10;
     }
 }

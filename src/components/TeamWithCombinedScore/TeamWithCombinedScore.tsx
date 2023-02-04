@@ -37,7 +37,7 @@ export const TeamWithCombinedScore = (props: IProps) => {
     i => i ? (i.scoreTracker?.notesMissed! + i.scoreTracker?.bombHits!) === 0 : false
   ).length
 
-  const teamNameOverflows = team.name.length > 18
+  const teamNameOverflows = team.name.length >= 18
 
   return (
     <div className={styles['score-team']}>

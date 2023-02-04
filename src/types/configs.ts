@@ -1,6 +1,7 @@
 export interface ITeam {
     id: string
     name: string
+    shortName?: string
     logoLink: string
 
     members: {

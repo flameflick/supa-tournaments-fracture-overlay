@@ -3,7 +3,6 @@ import React, { ReactPropTypes, useEffect } from 'react'
 import styles from './BaseMap.module.scss'
 
 import clsx from 'clsx'
-import { intervalToDuration, addSeconds, format } from 'date-fns'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDrum } from '@fortawesome/free-solid-svg-icons'
@@ -31,10 +30,7 @@ const shortDiffNameMap: Record<string, string> = {
 }
 
 export const BaseMap = (props: IBaseMapProps) => {
-  const { map: mapResult } = useBeatSaverMap(props.mapHash)
-
-  const mapDuration = mapResult ? format(addSeconds(new Date(0), mapResult.metadata.duration), 'm:ss') : ''
-  const previewImage = `https://eu.cdn.beatsaver.com/${props.mapHash?.toLowerCase()}.jpg`
+  const { map: mapResult, previewImage, mapDuration } = useBeatSaverMap(props.mapHash)
 
   return (
     <div className={styles['base-map']}>

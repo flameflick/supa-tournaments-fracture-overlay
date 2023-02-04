@@ -1,16 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 import wretch, { Wretch } from 'wretch'
 
-export const useApiResult = <T>(client: Wretch, url: string, skip: boolean) => {
+export const useApiResult = <T>(client: Wretch, url: string, skip: boolean): { result: T | null } => {
     const [result, setResult] = useState<T | null>(null)
 
     useEffect(() => {
         if (skip) return;
 
         const update = async () => {
-            const data = await client.get(url).json<T>()
+            try {
+                const data = await client.get(url).json<T>()
     
-            setResult(data)
+                setResult(data)
+            } catch (err) {
+                console.error(`Failed fetch at ${client._url}:${url}`)
+
+                setResult(null)
+            }
         }
     
         update()

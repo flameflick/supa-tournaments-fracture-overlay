@@ -21,7 +21,9 @@ interface IProps {
 const TEAM_SIZE = 3
 
 export const UserWithScore = (props: IProps) => {
-  const nicknameOverflows = props.user.name.length > 18
+  if (!props.user) return null
+
+  const nicknameOverflows = props.user.name.length >= 18
 
   const acc = props.score ? (props.score.accuracy! * 100).toFixed(2) : 0
 

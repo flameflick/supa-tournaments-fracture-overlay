@@ -22,6 +22,11 @@ export type RelaySong = {
 
 export type RelayScore = ReturnType<Packets.Push.RealtimeScore['toObject']>
 
+export type RelayTeamWithPoints = {
+    team: ReturnType<Models.Team['toObject']>
+    points: number
+}
+
 export type RealtimeScoreRelayPacket = {
     type: 'score'
 
@@ -51,6 +56,18 @@ export type UserRelayPacket = {
     user: RelayUser
 }
 
-export type RelayPacket = RealtimeScoreRelayPacket | SetTeamsToDisplayRelayPacket | MatchRelayPacket | UserRelayPacket
+export type UserLeftRelayPacket = {
+    type: 'userLeft'
+
+    user: RelayUser
+}
+
+export type TeamPointsPacket = {
+    type: 'points'
+
+    teams: RelayTeamWithPoints[]
+}
+
+export type RelayPacket = RealtimeScoreRelayPacket | SetTeamsToDisplayRelayPacket | MatchRelayPacket | UserRelayPacket | TeamPointsPacket | UserLeftRelayPacket
 
 export type RelayPacketResolvers = Record<RelayPacket['type'], Function>
