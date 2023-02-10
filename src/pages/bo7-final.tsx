@@ -3,10 +3,9 @@ import { useState } from 'react'
 import { ITeam } from '@/types/configs'
 
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Finals.module.css'
 
 import { BaseFooter } from '@/components/BaseFooter'
-import { BaseSidebar } from '@/components/BaseSidebar'
 import { useRelay } from '@/hooks/use-relay'
 import { BasePlayerCard } from '@/components/BasePlayerCard'
 
@@ -74,9 +73,7 @@ export default function Finals() {
       </section>
       
       
-      <BaseFooter songHash={songHash} selectedDifficulty={songDiff}/>
-
-      <BaseSidebar userScores={userScores} users={users} />
+      <BaseFooter fullWidth songHash={songHash} selectedDifficulty={songDiff}/>
     </main>
   )
 }

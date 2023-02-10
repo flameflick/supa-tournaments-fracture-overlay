@@ -8,10 +8,14 @@
     justify-content: space-between;
     padding-right: 40px;
 
-    width: calc(100% - var(--sidebar-width));
+    width: calc(100vw - var(--sidebar-width));
     height: 140px;
 
     background-color: var(--background-section);
+    
+    &_full-width {
+        width: 100vw;
+    }
 
     &__info {
         display: flex;

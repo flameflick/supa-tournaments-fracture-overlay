@@ -42,6 +42,9 @@
     &__container {
         background-color: #323232;
         border-radius: 5px;
+        background: transparent;
+
+        transition: background .5s ease-out;
 
         &:nth-child(1) {
             background: linear-gradient(89.96deg, #EFB607 0.03%, #323232 99.42%);

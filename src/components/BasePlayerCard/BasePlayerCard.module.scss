@@ -59,7 +59,13 @@
             text-align: right;
         
             &-combo {
-
+                &-fc {
+                    background-color: black;
+                    font-size: 14px;
+                    padding: 0 0.3rem;
+                    border-radius: 3px;
+                    margin-left: 6px;
+                }
             }
 
             &-accuracy {

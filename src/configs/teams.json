@@ -2,6 +2,32 @@
   {
     "members": [
       {
+        "nickname": "shrado",
+        "platformId": "76561198143307741",
+        "twitchUsername": "shrado",
+        "countryCode": "US"
+      },
+      {
+        "nickname": "Floatyoats",
+        "platformId": "76561198108275916",
+        "twitchUsername": "floatyoat",
+        "countryCode": "GB"
+      },
+      {
+        "nickname": "Anodize",
+        "platformId": "76561199122659617",
+        "twitchUsername": "anodize_",
+        "countryCode": "US"
+      }
+    ],
+    "id": "cea80c58-76f3-43f1-b125-765847198c96",
+    "name": "Court documents (that reveal Young Thug was in the process of constructing a Dyson Sphere in a distant Galaxy)",
+    "shortName": "Court documents (that reveal...)",
+    "logoLink": "https://i.imgur.com/b4pEEYm.png"
+  },
+  {
+    "members": [
+      {
         "nickname": "lucazzyt",
         "platformId": "76561198799070584",
         "twitchUsername": "lucazzyt",
@@ -496,32 +522,6 @@
     "id": "9a1a6734-9e8e-43e2-b959-40f35c78f70b",
     "name": "sploutchers",
     "logoLink": "https://i.imgur.com/Wb4ACKc.jpeg"
-  },
-  {
-    "members": [
-      {
-        "nickname": "shrado",
-        "platformId": "76561198143307741",
-        "twitchUsername": "shrado",
-        "countryCode": "US"
-      },
-      {
-        "nickname": "Floatyoats",
-        "platformId": "76561198108275916",
-        "twitchUsername": "floatyoat",
-        "countryCode": "GB"
-      },
-      {
-        "nickname": "Anodize",
-        "platformId": "76561199122659617",
-        "twitchUsername": "anodize_",
-        "countryCode": "US"
-      }
-    ],
-    "id": "cea80c58-76f3-43f1-b125-765847198c96",
-    "name": "Court documents (that reveal Young Thug was in the process of constructing a Dyson Sphere in a distant Galaxy)",
-    "shortName": "Court documents (that reveal...)",
-    "logoLink": "https://i.imgur.com/b4pEEYm.png"
   },
   {
     "members": [

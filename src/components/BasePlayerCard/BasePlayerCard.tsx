@@ -5,6 +5,7 @@ import styles from './BasePlayerCard.module.scss'
 import { RelayScore, RelayUser } from '@/types/relay'
 import { useScoreSaberPlayer } from '@/hooks/use-scoresaber'
 import { useBeatLeaderPlayer } from '@/hooks/use-beatleader'
+import { useScore } from '@/hooks/use-score'
 import { getContrastingColor } from '@/utils/colors'
 import { getPlayerTwitchUsername } from '@/utils/config'
 
@@ -40,6 +41,10 @@ export const BasePlayerCard = (props: Props) => {
     const nameParts = name.split('|')
     return nameParts[nameParts.length - 1]
   }
+
+  const score = useScore(props.score)
+
+  console.info(score)
 
   return (
     <div className={styles['base-iframe__wrapper']}>
@@ -84,8 +89,11 @@ export const BasePlayerCard = (props: Props) => {
         </div>
 
         <div className={styles['base-iframe__score-trackers']}>
-            <h3 className={styles['base-iframe__score-trackers-combo']}>1337x FC</h3>
-            <h4 className={styles['base-iframe__score-trackers-accuracy']}>96.41%</h4>
+            <h3 className={styles['base-iframe__score-trackers-combo']}>
+              { score.combo }x  
+              { score.isFC ? <span className={styles['base-iframe__score-trackers-combo-fc']}>FC</span> : null}
+            </h3>
+            <h4 className={styles['base-iframe__score-trackers-accuracy']}>{ score.acc }%</h4>
         </div>
       </div>
     </div>

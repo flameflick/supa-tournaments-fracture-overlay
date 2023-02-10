@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket, RelayUser, UserRelayPacket, TeamPointsPacket, RelayTeamWithPoints, UserLeftRelayPacket } from '@/types/relay'
+import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket, RelayUser, UserRelayPacket, TeamPointsPacket, RelayTeamWithPoints, UserLeftRelayPacket, AudioPlayerPacket } from '@/types/relay'
 
 import { beatSaberLevelIdToHash } from '@/utils/beatsaver'
 import { getTeamByUUID } from '@/utils/config'
@@ -30,8 +30,19 @@ export const useRelay = () => {
 
     const [teamPoints, setTeamPoints] = useState<null | RelayTeamWithPoints[]>(null)
 
+    const [audioPlayerIndex, setAudioPlayerIndex] = useState(0)
+
     const resolvePacket = (packetData: RelayPacket) => {
         const resolvers: RelayPacketResolvers = {
+            'setAudioPlayer': (data: AudioPlayerPacket) => {
+                setAudioPlayerIndex(data.player - 1)
+            },
+        
+            'setTeamsToDisplay': (data: SetTeamsToDisplayRelayPacket) => {
+                setTeam1Id(data.team1)
+                setTeam2Id(data.team2)
+            },
+
             'score': (data: RealtimeScoreRelayPacket) => {
                 const newScores = structuredClone(userScores)
                 const newUsers = structuredClone(users)
@@ -41,12 +52,6 @@ export const useRelay = () => {
                 
                 setUsers(oldUsers => ({...oldUsers, ...newUsers}))
                 setUserScores(oldScores => ({...oldScores, ...newScores}))
-            },
-
-            'setTeamsToDisplay': (data: SetTeamsToDisplayRelayPacket) => {
-                console.log(data)
-                setTeam1Id(data.team1)
-                setTeam2Id(data.team2)
             },
 
             'match': (data: MatchRelayPacket) => {
@@ -104,6 +109,7 @@ export const useRelay = () => {
         team2,
 
         teamPoints,
+        audioPlayerIndex,
 
         userScores,
         users,

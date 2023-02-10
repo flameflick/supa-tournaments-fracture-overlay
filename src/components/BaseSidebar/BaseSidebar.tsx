@@ -88,7 +88,7 @@ export const BaseSidebar = (props: IProps) => {
 
   return (
     <aside className={styles['base-sidebar']}>
-      <h3 className={styles['base-sidebar__title']}>Team Leaderboard {teamLeaderboardType}</h3>
+      <h3 className={styles['base-sidebar__title']}>Team Leaderboard</h3>
       <Reorder.Group axis="y" className={
         clsx(styles['base-sidebar__entities-list'], 
         )} onReorder={() => null} values={teamsConfig}>
