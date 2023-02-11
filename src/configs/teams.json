@@ -199,6 +199,12 @@
         "platformId": "76561198802040781",
         "twitchUsername": "tibyteslive",
         "countryCode": "NL"
+      },
+      {
+        "nickname": "HolyKaes",
+        "platformId": "76561198948590641",
+        "twitchUsername": "holykaes",
+        "countryCode": "NL"
       }
     ],
     "id": "72eab302-df00-4391-92bf-5d10cdc6dddf",
@@ -425,9 +431,9 @@
         "countryCode": "DE"
       },
       {
-        "nickname": "miitchel",
-        "platformId": "76561198301082541",
-        "twitchUsername": "miitchel",
+        "nickname": "shadowai",
+        "platformId": "76561198117675143",
+        "twitchUsername": "shadowai",
         "countryCode": "NL"
       }
     ],
