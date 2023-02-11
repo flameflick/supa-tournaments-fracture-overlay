@@ -67,7 +67,7 @@ export default function Home() {
             <BasePlayerCard 
               userId={i.platformId} 
               score={userScores[i.platformId]}
-              muted={index !== audioPlayerIndex}
+              muted={(index + 3) !== audioPlayerIndex}
               scoreTrackerPosition="bottom" 
               key={i.platformId} 
             />
