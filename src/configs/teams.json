@@ -18,6 +18,12 @@
         "platformId": "76561199122659617",
         "twitchUsername": "anodize_",
         "countryCode": "US"
+      },
+      {
+        "nickname": "Benny Tea",
+        "platformId": "76561198187170453",
+        "twitchUsername": "benny_tea",
+        "countryCode": "US"
       }
     ],
     "id": "cea80c58-76f3-43f1-b125-765847198c96",
@@ -44,6 +50,12 @@
         "platformId": "76561198284425720",
         "twitchUsername": "joah230",
         "countryCode": "DE"
+      },
+      {
+        "nickname": "felafel",
+        "platformId": "76561199093197457",
+        "twitchUsername": "felefell",
+        "countryCode": "GB"
       }
     ],
     "id": "9fec2903-3eb1-4995-8427-d0c7770337ae",
@@ -80,31 +92,6 @@
     "id": "aa2296c4-3a67-458c-bc77-89b1346b465a",
     "name": "Hash Slinging Slashers",
     "logoLink": "https://i.imgur.com/lMTpoQ9.jpeg"
-  },
-  {
-    "members": [
-      {
-        "nickname": "Datsurb",
-        "platformId": "76561198088053842",
-        "twitchUsername": "datsurb1",
-        "countryCode": "NO"
-      },
-      {
-        "nickname": "flor",
-        "platformId": "76561198072602937",
-        "twitchUsername": "flor_salvas",
-        "countryCode": "NO"
-      },
-      {
-        "nickname": "Sensei WU",
-        "platformId": "76561198400393482",
-        "twitchUsername": "tmbs_senseiwu",
-        "countryCode": "DK"
-      }
-    ],
-    "id": "e70bfec6-bfb7-43fe-b4b3-8602c9966616",
-    "name": "Chromosome Collectors",
-    "logoLink": "https://i.imgur.com/YcymK0w.png"
   },
   {
     "members": [
@@ -324,6 +311,12 @@
         "platformId": "76561198083631499",
         "twitchUsername": "mynamepan",
         "countryCode": "DK"
+      },
+      {
+        "nickname": "Moepop",
+        "platformId": "76561198313644622",
+        "twitchUsername": "moepop1",
+        "countryCode": "US"
       }
     ],
     "id": "6b54d23e-7ba2-4ccc-bbe9-de5a9bc96729",
@@ -461,6 +454,12 @@
         "platformId": "76561198249452550",
         "twitchUsername": "gesca",
         "countryCode": "GB"
+      },
+      {
+        "nickname": "Wookie",
+        "platformId": "76561198103016268",
+        "twitchUsername": "wookieoj",
+        "countryCode": "NO"
       }
     ],
     "id": "103e84a1-7e55-4800-967e-429575bd69b9",
