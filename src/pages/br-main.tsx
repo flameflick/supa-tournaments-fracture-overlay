@@ -24,7 +24,9 @@ export default function Home() {
     teamPoints,
 
     songHash,
-    songDiff
+    songDiff,
+
+    audioPlayerIndex
   } = useRelay()
 
   const getActiveTeamMembers = (team: ITeam) => {
@@ -37,11 +39,11 @@ export default function Home() {
     <main>
       <section className={styles['main-streams']}>
         <div className={styles['main-streams__team-wrapper']}>
-          {team1 ? getActiveTeamMembers(team1).map(i => 
+          {team1 ? getActiveTeamMembers(team1).map((i, index) => 
             <BasePlayerCard 
               userId={i.platformId}
               score={userScores[i.platformId]}
-              muted={false}
+              muted={index !== audioPlayerIndex}
               key={i.platformId}  
             />
           ) : null}
@@ -56,17 +58,16 @@ export default function Home() {
 
           <div className={styles['main-streams__casters-placeholder']}></div>
 
-          <SkewLogo className={styles['main-streams__main-logo']}/>
-          
-          
+          <SkewLogo className={styles['main-streams__main-logo']}/>        
         </div>
 
 
         <div className={styles['main-streams__team-wrapper']}>
-          {team2 ? getActiveTeamMembers(team2).map(i => 
+          {team2 ? getActiveTeamMembers(team2).map((i, index) => 
             <BasePlayerCard 
               userId={i.platformId} 
               score={userScores[i.platformId]}
+              muted={index !== audioPlayerIndex}
               scoreTrackerPosition="bottom" 
               key={i.platformId} 
             />
