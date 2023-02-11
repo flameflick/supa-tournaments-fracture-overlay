@@ -16,6 +16,8 @@ specifiers:
   '@types/node': 18.11.7
   '@types/react': 18.0.24
   '@types/react-dom': 18.0.8
+  '@types/ungap__structured-clone': ^0.3.0
+  '@ungap/structured-clone': ^1.0.1
   autoprefixer: ^10.4.12
   clsx: ^1.2.1
   date-fns: ^2.29.3
@@ -44,6 +46,8 @@ dependencies:
   '@next/font': 13.0.7
   '@preact/signals-react': 1.2.1_react@18.2.0
   '@svgr/webpack': 6.5.1
+  '@types/ungap__structured-clone': 0.3.0
+  '@ungap/structured-clone': 1.0.1
   autoprefixer: 10.4.13_postcss@8.4.20
   clsx: 1.2.1
   date-fns: 2.29.3
@@ -1889,6 +1893,10 @@ packages:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: true
 
+  /@types/ungap__structured-clone/0.3.0:
+    resolution: {integrity: sha512-eBWREUhVUGPze+bUW22AgUr05k8u+vETzuYdLYSvWqGTUe0KOf+zVnOB1qER5wMcw8V6D9Ar4DfJmVvD1yu0kQ==}
+    dev: false
+
   /@typescript-eslint/parser/5.46.0_wyqvi574yv7oiwfeinomdzmc3m:
     resolution: {integrity: sha512-joNO6zMGUZg+C73vwrKXCd8usnsmOYmgW/w5ZW0pG0RGvqeznjtGDk61EqqTpNrFLUYBW2RSBFrxdAZMqA4OZA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -1950,6 +1958,10 @@ packages:
       '@typescript-eslint/types': 5.46.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@ungap/structured-clone/1.0.1:
+    resolution: {integrity: sha512-zKVyTt6rELvPXYwcVPTJcPFtY0AckN5A7xWuc7owBqR0FdtuDYhE9MZZUi6IY1kZUQFSXV1B3UOOIyLkVHYd2w==}
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.1:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}

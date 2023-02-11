@@ -4,6 +4,8 @@ import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsTo
 
 import { beatSaberLevelIdToHash } from '@/utils/beatsaver'
 import { getTeamByUUID } from '@/utils/config'
+import structuredClone from '@ungap/structured-clone'
+
 
 const diffIdToNameMap: Record<number, string> = {
     0: 'easy',
