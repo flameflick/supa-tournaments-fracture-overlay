@@ -30,7 +30,7 @@ export const UserWithScore = (props: IProps) => {
     player: scoreSaberResult
   } = useScoreSaberPlayer(props.user?.platformId ?? null)
 
-  return (
+  return props.user ? 
     <div className={styles['score-user']}>
       <img 
         className={styles['score-user__logo']}
@@ -50,6 +50,5 @@ export const UserWithScore = (props: IProps) => {
         <p className={styles['score-user__score-tracker-fcs']}>{ score.combo }x { score.isFC ? '(FC)' : null }</p>
         <p className={styles['score-user__score-tracker-acc']}>{ score.acc }%</p>
       </div>
-    </div>
-  )
+    </div> : null
 }
