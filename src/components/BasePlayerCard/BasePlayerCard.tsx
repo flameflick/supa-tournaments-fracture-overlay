@@ -26,6 +26,8 @@ const scoreShadowOffsetMap = {
   'bottom': '-100px'
 }
 
+const OVERLAY_ORIGIN = process.env.ORIGIN || 'localhost'
+
 export const BasePlayerCard = (props: Props) => {
   const playerTwitchName = getPlayerTwitchUsername(props.userId)
 
@@ -50,7 +52,7 @@ export const BasePlayerCard = (props: Props) => {
     <div className={styles['base-iframe__wrapper']}>
       <iframe
         className={styles['base-iframe']}
-        src={`https://player.twitch.tv/?channel=${playerTwitchName}&parent=localhost&muted=${props.muted ?? true}&controls=false`}
+        src={`https://player.twitch.tv/?channel=${playerTwitchName}&parent=${OVERLAY_ORIGIN}&muted=${props.muted ?? true}&controls=false`}
         height="390px"
         width="610px">
       </iframe>
