@@ -46,8 +46,6 @@ export const BasePlayerCard = (props: Props) => {
 
   const score = useScore(props.score)
 
-  console.info(score)
-
   return (
     <div className={styles['base-iframe__wrapper']}>
       <iframe
