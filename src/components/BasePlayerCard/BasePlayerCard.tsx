@@ -8,11 +8,13 @@ import { useBeatLeaderPlayer } from '@/hooks/use-beatleader'
 import { useScore } from '@/hooks/use-score'
 import { getContrastingColor } from '@/utils/colors'
 import { getPlayerTwitchUsername } from '@/utils/config'
+import clsx from 'clsx'
 
 type Props = {
   userId: string
   score?: RelayScore
   muted?: boolean
+  big?: boolean
   scoreTrackerPosition?: 'top' | 'bottom'
 }
 
@@ -47,12 +49,15 @@ export const BasePlayerCard = (props: Props) => {
   console.info(score)
 
   return (
-    <div className={styles['base-iframe__wrapper']}>
+    <div className={clsx(
+        styles['base-iframe__wrapper'],
+        props.big && styles['base-iframe__wrapper_big']
+    )}>
       <iframe
         className={styles['base-iframe']}
         src={`https://player.twitch.tv/?channel=${playerTwitchName}&parent=localhost&muted=${props.muted ?? true}&controls=false`}
-        height="390px"
-        width="610px">
+        height={props.big ? '400px' : '390px'}
+        width={props.big ? '800px' : '610px'}>
       </iframe>
 
       <div 

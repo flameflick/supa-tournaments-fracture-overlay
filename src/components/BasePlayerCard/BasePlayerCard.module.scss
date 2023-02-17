@@ -9,6 +9,11 @@
         width: 570px;
         height: 345px;
         overflow: hidden;
+
+        &_big {
+            width: 600px;
+            height: 355px;
+        }
     }
 
     &__score {

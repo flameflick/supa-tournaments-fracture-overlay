@@ -39,7 +39,7 @@ export default function Finals() {
       <section className={styles['main-streams']}>
         <div className={styles['main-streams__team-wrapper']}>
           {team1 ? getActiveTeamMembers(team1).map(i => 
-            <BasePlayerCard userId={i.platformId}  muted={false} key={i.platformId} />
+            <BasePlayerCard userId={i.platformId}  muted={false} key={i.platformId} big />
           ) : null}
 
           <div className={styles['main-streams__team-badge']}>
@@ -62,7 +62,7 @@ export default function Finals() {
 
         <div className={styles['main-streams__team-wrapper']}>
           {team2 ? getActiveTeamMembers(team2).map(i => 
-            <BasePlayerCard userId={i.platformId} scoreTrackerPosition="bottom" key={i.platformId} />
+            <BasePlayerCard userId={i.platformId} scoreTrackerPosition="bottom" key={i.platformId} big />
           ) : null}
 
           <div className={clsx(styles['main-streams__team-badge'], styles['main-streams__team-badge_team-bottom'])}>
