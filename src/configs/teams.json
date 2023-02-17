@@ -24,6 +24,12 @@
         "platformId": "76561198187170453",
         "twitchUsername": "benny_tea",
         "countryCode": "US"
+      },
+      {
+        "nickname": "Anonymoose",
+        "platformId": "76561199060383628",
+        "twitchUsername": "anonymoose527",
+        "countryCode": "US"
       }
     ],
     "id": "cea80c58-76f3-43f1-b125-765847198c96",
@@ -378,6 +384,12 @@
         "nickname": "Brubrum1muri",
         "platformId": "2218632398238707",
         "twitchUsername": "brubrum1muri",
+        "countryCode": "FI"
+      },
+      {
+        "nickname": "Takanasi",
+        "platformId": "76561198093028672",
+        "twitchUsername": "takanas1",
         "countryCode": "FI"
       }
     ],
