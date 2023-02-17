@@ -16,23 +16,21 @@ interface IProps {
   // Score of associated user
   score: RelayScore
 
-  user: RelayUser
+  user?: RelayUser
 }
 
 const TEAM_SIZE = 3
 
 export const UserWithScore = (props: IProps) => {
-  if (!props.user) return null
-
-  const nicknameOverflows = props.user.name.length >=  18
+  const nicknameOverflows = props.user && props.user.name.length >=  18
 
   const score = useScore(props.score)
 
   const {
     player: scoreSaberResult
-  } = useScoreSaberPlayer(props.user.platformId)
+  } = useScoreSaberPlayer(props.user?.platformId ?? null)
 
-  return (
+  return props.user ? 
     <div className={styles['score-user']}>
       <img 
         className={styles['score-user__logo']}
@@ -45,13 +43,12 @@ export const UserWithScore = (props: IProps) => {
         hollow={true} 
         className={styles['score-user__name']}
       >
-        { props.user.name } &nbsp;
+        { props.user?.name } &nbsp;
       </BaseMarquee>
 
       <div className={styles['score-user__score-tracker']}>
         <p className={styles['score-user__score-tracker-fcs']}>{ score.combo }x { score.isFC ? '(FC)' : null }</p>
         <p className={styles['score-user__score-tracker-acc']}>{ score.acc }%</p>
       </div>
-    </div>
-  )
+    </div> : null
 }

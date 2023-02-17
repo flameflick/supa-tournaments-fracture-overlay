@@ -28,6 +28,8 @@ const scoreShadowOffsetMap = {
   'bottom': '-100px'
 }
 
+const OVERLAY_ORIGIN = process.env.ORIGIN || 'localhost'
+
 export const BasePlayerCard = (props: Props) => {
   const playerTwitchName = getPlayerTwitchUsername(props.userId)
 
@@ -45,8 +47,6 @@ export const BasePlayerCard = (props: Props) => {
   }
 
   const score = useScore(props.score)
-
-  console.info(score)
 
   return (
     <div className={clsx(

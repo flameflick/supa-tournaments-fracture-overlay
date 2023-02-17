@@ -27,12 +27,8 @@ export default function Finals() {
   const getActiveTeamMembers = (team: ITeam) => {
     const members = team.members.filter(i => i.platformId in users)
 
-    console.log(members)
-
     return members.length === 3 ? members : team.members.slice(0, 3)
   }
-
-  console.log(team1)
 
   return (
     <main>
