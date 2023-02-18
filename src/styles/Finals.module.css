@@ -19,6 +19,26 @@
             justify-content: center;
         }
 
+        &-score {
+            width: 450px;
+            height: 150px;
+            align-self: center;
+            justify-self: center;
+            background-color: var(--background-section-alt);
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+
+            &:first-child {
+                justify-self: flex-start;
+                margin-top: 20px;
+            }
+
+            &:last-child {
+                justify-self: flex-end;
+                margin-bottom: 20px;
+            }
+        }
+
         &-badge {
             position: absolute;
             bottom: -20px;
@@ -50,12 +70,18 @@
                 &_team-bottom {
                     bottom: unset;
                     top: -2px;
+                    left: unset;
+                    right: -40px;
                 }
             }
 
             &_team-bottom {
                 top: -20px;
+                left: unset;
+                right: 30px;
                 bottom: unset;
+                padding: 4px 12px;
+                padding-right: 65px;
             }
         }
     }
@@ -85,12 +111,14 @@
         width: 100%;
         
         display: grid; 
-        grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-columns: repeat(3, 1fr); 
         grid-template-rows: 1fr; 
         grid-template-areas: 
             'a b c'; 
 
         z-index: 2;
+
+        padding: 0 20px;
     }
 
     &__main-logo {

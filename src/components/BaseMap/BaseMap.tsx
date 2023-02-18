@@ -46,7 +46,7 @@ export const BaseMap = (props: IBaseMapProps) => {
 
         <div className={styles['base-map__info']}>
           <h2 className={styles['base-map__info-artist-name']}>{ mapResult?.metadata.songAuthorName }</h2>
-          <h3 className={styles['base-map__info-name']}>{ mapResult?.metadata.songName} - {mapResult?.metadata.songSubName}</h3>
+          <h3 className={styles['base-map__info-name']}>{ mapResult?.metadata.songName} {mapResult?.metadata.songSubName}</h3>
 
           <div className={styles['base-map__info-chore']}>
           { props.selectedDifficulty ? 

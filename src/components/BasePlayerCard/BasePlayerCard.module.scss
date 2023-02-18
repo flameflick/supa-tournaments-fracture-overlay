@@ -11,8 +11,37 @@
         overflow: hidden;
 
         &_big {
-            width: 600px;
+            width: 630px;
             height: 355px;
+        }
+    }
+
+    &__audio-badge {
+        position: absolute;
+        bottom: .3rem;
+        right: .3rem;
+
+        width: 1.7rem;
+        height: 1.7rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        background-color: var(--background-main);
+
+        svg {
+            width: 1rem;
+            height: 1rem;
+            fill: var(--typography-main);
+        }
+
+        &_bottom {
+            top: .3rem;
+            left: .3rem;
+            bottom: unset;
+            right: unset;
         }
     }
 

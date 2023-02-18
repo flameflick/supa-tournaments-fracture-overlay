@@ -1,6 +1,9 @@
 import React from 'react'
 
 import styles from './BasePlayerCard.module.scss'
+import clsx from 'clsx'
+
+import VolumeIcon from '@/assets/volume.svg'
 
 import { RelayScore, RelayUser } from '@/types/relay'
 import { useScoreSaberPlayer } from '@/hooks/use-scoresaber'
@@ -8,7 +11,6 @@ import { useBeatLeaderPlayer } from '@/hooks/use-beatleader'
 import { useScore } from '@/hooks/use-score'
 import { getContrastingColor } from '@/utils/colors'
 import { getPlayerTwitchUsername } from '@/utils/config'
-import clsx from 'clsx'
 
 type Props = {
   userId: string
@@ -55,10 +57,17 @@ export const BasePlayerCard = (props: Props) => {
     )}>
       <iframe
         className={styles['base-iframe']}
-        src={`https://player.twitch.tv/?channel=${playerTwitchName}&parent=localhost&muted=${props.muted ?? true}&controls=false`}
+        src={`https://player.twitch.tv/?channel=${playerTwitchName}&parent=${OVERLAY_ORIGIN}&muted=${props.muted ?? true}&controls=false`}
         height={props.big ? '400px' : '390px'}
         width={props.big ? '800px' : '610px'}>
       </iframe>
+
+      { !props.muted ? <div className={clsx(
+        styles['base-iframe__audio-badge'],
+        props.scoreTrackerPosition === 'bottom' && styles['base-iframe__audio-badge_bottom']
+      )}>
+        <VolumeIcon />
+      </div> : null }
 
       <div 
         className={styles['base-iframe__score']}
