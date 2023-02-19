@@ -102,6 +102,7 @@ export default function Finals() {
               <div className={styles['main-streams__team-score-points']}>
                 { Array(4).fill(null).map((_, index) => 
                   <ValknutLogo 
+                    key={index}
                     className={clsx(
                       styles['main-streams__team-score-point'],
                       index < team1FinalsPoints && styles['main-streams__team-score-point_active']
@@ -136,6 +137,7 @@ export default function Finals() {
               <div className={styles['main-streams__team-score-points']}>
                 { Array(4).fill(null).map((_, index) => 
                   <ValknutLogo 
+                    key={index}
                     className={clsx(
                       styles['main-streams__team-score-point'],
                       index < team2FinalsPoints && styles['main-streams__team-score-point_active']
