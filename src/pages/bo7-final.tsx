@@ -92,7 +92,7 @@ export default function Finals() {
                   {team1Score.fullComboCount}x
                   <span className={styles['main-streams__team-score-top-fc-badge']}>FC</span>
                 </span>
-                <span className={styles['main-streams__team-score-top-acc']}>{team1Score.combinedAcc}</span>
+                <span className={styles['main-streams__team-score-top-acc']}>{team1Score.combinedAcc}%</span>
               </div>
 
               <h3 className={styles['main-streams__team-score-sum']}>
@@ -127,7 +127,7 @@ export default function Finals() {
                   {team2Score.fullComboCount}x
                   <span className={styles['main-streams__team-score-top-fc-badge']}>FC</span>
                 </span>
-                <span className={styles['main-streams__team-score-top-acc']}>{team2Score.combinedAcc}</span>
+                <span className={styles['main-streams__team-score-top-acc']}>{team2Score.combinedAcc}%</span>
               </div>
 
               <h3 className={styles['main-streams__team-score-sum']}>
