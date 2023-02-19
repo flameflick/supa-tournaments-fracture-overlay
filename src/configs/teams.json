@@ -14,22 +14,10 @@
         "countryCode": "GB"
       },
       {
-        "nickname": "Anodize",
-        "platformId": "76561199122659617",
-        "twitchUsername": "anodize_",
-        "countryCode": "US"
-      },
-      {
-        "nickname": "Benny Tea",
-        "platformId": "76561198187170453",
-        "twitchUsername": "benny_tea",
-        "countryCode": "US"
-      },
-      {
-        "nickname": "Anonymoose",
-        "platformId": "76561199060383628",
-        "twitchUsername": "anonymoose527",
-        "countryCode": "US"
+        "nickname": "Rosie",
+        "platformId": "76561198160636106",
+        "twitchUsername": "rosievr",
+        "countryCode": "GB"
       }
     ],
     "id": "cea80c58-76f3-43f1-b125-765847198c96",
@@ -127,9 +115,9 @@
   {
     "members": [
       {
-        "nickname": "Bytesy",
-        "platformId": "2169974796454690",
-        "twitchUsername": "bytesy_",
+        "nickname": "Astrella",
+        "platformId": "2538637699496776",
+        "twitchUsername": "allertsa_",
         "countryCode": "US"
       },
       {
@@ -139,16 +127,22 @@
         "countryCode": "US"
       },
       {
+        "nickname": "WDG_IsraGRFK",
+        "platformId": "76561198088965557",
+        "twitchUsername": "wdg_isragrfk",
+        "countryCode": "ES"
+      },
+      {
         "nickname": "Fainted_soul",
         "platformId": "76561199017001958",
         "twitchUsername": "fainted_soul",
         "countryCode": "US"
       },
       {
-        "nickname": "WDG_IsraGRFK",
-        "platformId": "76561198088965557",
-        "twitchUsername": "wdg_isragrfk",
-        "countryCode": "ES"
+        "nickname": "Bytesy",
+        "platformId": "2169974796454690",
+        "twitchUsername": "bytesy_",
+        "countryCode": "US"
       }
     ],
     "id": "a5e2aace-ad61-4d1a-af8d-b285f2409e02",
@@ -170,9 +164,9 @@
         "countryCode": "GB"
       },
       {
-        "nickname": "Sona",
+        "nickname": "Astellic",
         "platformId": "76561199093169351",
-        "twitchUsername": "v_sona",
+        "twitchUsername": "Astellic_",
         "countryCode": "PH"
       },
       {
@@ -248,12 +242,6 @@
         "nickname": "asmuund",
         "platformId": "76561198306464226",
         "twitchUsername": "asmuund",
-        "countryCode": "NO"
-      },
-      {
-        "nickname": "Latest",
-        "platformId": "76561198842731461",
-        "twitchUsername": "lateest",
         "countryCode": "NO"
       },
       {
@@ -559,6 +547,12 @@
         "platformId": "76561199048817315",
         "twitchUsername": "jadenithink07",
         "countryCode": "US"
+      },
+      {
+        "nickname": "Latest",
+        "platformId": "76561198842731461",
+        "twitchUsername": "lateest",
+        "countryCode": "NO"
       }
     ],
     "id": "eb876176-3496-4000-999f-3067e3bef8f1",

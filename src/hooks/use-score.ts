@@ -6,7 +6,8 @@ export const useScore = (score?: RelayScore) => {
 
     const misses = 
         (score?.scoreTracker?.notesMissed ?? 0) + 
-        (score?.scoreTracker?.bombHits ?? 0)
+        (score?.scoreTracker?.bombHits ?? 0) +
+        (score?.scoreTracker?.badCuts ?? 0)
 
     const isFC = 
         misses === 0

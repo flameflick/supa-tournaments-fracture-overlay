@@ -46,9 +46,9 @@ export const BaseMap = (props: IBaseMapProps) => {
 
         <div className={styles['base-map__info']}>
           <h2 className={styles['base-map__info-artist-name']}>{ mapResult?.metadata.songAuthorName }</h2>
-          <h3 className={styles['base-map__info-name']}>{ mapResult?.metadata.songName} {mapResult?.metadata.songSubName}</h3>
+          <h3 className={styles['base-map__info-name']}>{ mapResult?.metadata.songName}</h3>
 
-          <div className={styles['base-map__info-chore']}>
+          { mapResult ? <div className={styles['base-map__info-chore']}>
           { props.selectedDifficulty ? 
             <span 
               className={styles['base-map__info-badge']}
@@ -65,7 +65,7 @@ export const BaseMap = (props: IBaseMapProps) => {
             <h4 className={styles['base-map__info-mapper']}>by { mapResult?.metadata.levelAuthorName }</h4>
 
             <span className={styles['base-map__info-duration']}>{mapResult?.id}</span>
-          </div>
+          </div> : null }
         </div>
       </div>
     </div>

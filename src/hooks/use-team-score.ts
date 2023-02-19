@@ -20,7 +20,11 @@ export const useTeamScore = (scores: RelayScore[] | null) => {
     , 0)
     
     composedScore.fullComboCount = scores.filter(
-        i => i ? (i.scoreTracker?.notesMissed! + i.scoreTracker?.bombHits!) === 0 : false
+        i => i ? 
+            (i?.scoreTracker?.notesMissed ?? 0) + 
+            (i?.scoreTracker?.bombHits ?? 0) +
+            (i?.scoreTracker?.badCuts ?? 0) === 0 
+        : false
     ).length
 
     return composedScore

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket, RelayUser, UserRelayPacket, TeamPointsPacket, RelayTeamWithPoints, UserLeftRelayPacket, AudioPlayerPacket } from '@/types/relay'
+import { RelayPacketResolvers, RelayPacket, RealtimeScoreRelayPacket, SetTeamsToDisplayRelayPacket, RelayScore, MatchRelayPacket, RelayUser, UserRelayPacket, TeamPointsPacket, RelayTeamWithPoints, UserLeftRelayPacket, AudioPlayerPacket, FinalsPointsPacket } from '@/types/relay'
 
 import { beatSaberLevelIdToHash } from '@/utils/beatsaver'
 import { getTeamByUUID } from '@/utils/config'
@@ -18,8 +18,8 @@ const diffIdToNameMap: Record<number, string> = {
 export const useRelay = () => {
     const [isConnected, setIsConnected] = useState<boolean>(false)
 
-    const [team1Id, setTeam1Id] = useState<null | string>('9fec2903-3eb1-4995-8427-d0c7770337ae')
-    const [team2Id, setTeam2Id] = useState<null | string>('aa2296c4-3a67-458c-bc77-89b1346b465a')
+    const [team1Id, setTeam1Id] = useState<null | string>('a5e2aace-ad61-4d1a-af8d-b285f2409e02')
+    const [team2Id, setTeam2Id] = useState<null | string>('0f84d310-60f0-4de7-b98f-d90ee5b4bced')
 
     const [userScores, setUserScores] = useState<Record<string, RelayScore>>({})
     const [users, setUsers] = useState<Record<string, RelayUser>>({})
@@ -31,6 +31,9 @@ export const useRelay = () => {
     const team2 = getTeamByUUID(team2Id)
 
     const [teamPoints, setTeamPoints] = useState<null | RelayTeamWithPoints[]>(null)
+    
+    const [team1FinalsPoints, setTeam1FinalsPoints] = useState<number>(0)
+    const [team2FinalsPoints, setTeam2FinalsPoints] = useState<number>(0)
 
     const [audioPlayerIndex, setAudioPlayerIndex] = useState(0)
 
@@ -81,6 +84,11 @@ export const useRelay = () => {
                 setTeamPoints(data.teams)
             },
 
+            'setFinalsPoints': (data: FinalsPointsPacket) => {
+                setTeam1FinalsPoints(data.team1)
+                setTeam2FinalsPoints(data.team2)
+            },
+
             'userLeft': (data: UserLeftRelayPacket) => {}
         }
 
@@ -109,6 +117,9 @@ export const useRelay = () => {
     return {
         team1,
         team2,
+
+        team1FinalsPoints,
+        team2FinalsPoints,
 
         teamPoints,
         audioPlayerIndex,

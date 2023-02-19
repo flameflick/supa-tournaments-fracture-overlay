@@ -11,13 +11,16 @@ import { useTeamScore } from '@/hooks/use-team-score'
 import { BasePlayerCard } from '@/components/BasePlayerCard'
 
 import SkewLogo from '@/assets/skew-logo.svg'
-import ValknutLogo from '@/assets/valknut-logo.svg'
+import ValknutLogo from '@/assets/valknut-logo-bold.svg'
 import clsx from 'clsx'
 
 export default function Finals() {
   const {
     team1,
     team2,
+
+    team1FinalsPoints,
+    team2FinalsPoints,
 
     userScores,
     users,
@@ -73,23 +76,74 @@ export default function Finals() {
 
           <div className={styles['main-streams__team-badge']}>
             <img className={styles['main-streams__team-badge-image']} src={team1?.logoLink}/>
-            { team1?.name }
+            { team1?.shortName ?? team1?.name }
           </div>
         </div>
 
         <div className={styles['main-streams__middle-info']}>
           <div className={styles['main-streams__team-score']}>
-            1
+            <div className={styles['main-streams__team-score-bg']}>
+              <img className={styles['main-streams__team-score-bg-image']} src={team1?.logoLink}/>
+            </div>
+            
+            <div className={styles['main-streams__team-score-wrapper']}>
+              <div className={styles['main-streams__team-score-top']}>
+                <span className={styles['main-streams__team-score-top-fc']}>
+                  {team1Score.fullComboCount}x
+                  <span className={styles['main-streams__team-score-top-fc-badge']}>FC</span>
+                </span>
+                <span className={styles['main-streams__team-score-top-acc']}>{team1Score.combinedAcc}</span>
+              </div>
+
+              <h3 className={styles['main-streams__team-score-sum']}>
+                { new Intl.NumberFormat('de-DE').format(team1Score.combinedScore) }
+              </h3>
+
+              <div className={styles['main-streams__team-score-points']}>
+                { Array(4).fill(null).map((_, index) => 
+                  <ValknutLogo 
+                    className={clsx(
+                      styles['main-streams__team-score-point'],
+                      index < team1FinalsPoints && styles['main-streams__team-score-point_active']
+                    )}
+                  /> 
+                )}
+              </div>
+            </div>
           </div>
 
           <div className={styles['main-streams__casters-placeholder']}>
-            {JSON.stringify(team1Score)}
-            <br></br>
-            {JSON.stringify(team2Score)}
           </div>
 
           <div className={styles['main-streams__team-score']}>
-            1
+            <div className={styles['main-streams__team-score-bg']}>
+              <img className={styles['main-streams__team-score-bg-image']} src={team2?.logoLink}/>
+            </div>
+            
+            <div className={styles['main-streams__team-score-wrapper']}>
+              <div className={styles['main-streams__team-score-top']}>
+                <span className={styles['main-streams__team-score-top-fc']}>
+                  {team2Score.fullComboCount}x
+                  <span className={styles['main-streams__team-score-top-fc-badge']}>FC</span>
+                </span>
+                <span className={styles['main-streams__team-score-top-acc']}>{team2Score.combinedAcc}</span>
+              </div>
+
+              <h3 className={styles['main-streams__team-score-sum']}>
+                { new Intl.NumberFormat('de-DE').format(team2Score.combinedScore) }
+              </h3>
+
+              <div className={styles['main-streams__team-score-points']}>
+                { Array(4).fill(null).map((_, index) => 
+                  <ValknutLogo 
+                    className={clsx(
+                      styles['main-streams__team-score-point'],
+                      index < team2FinalsPoints && styles['main-streams__team-score-point_active']
+                    )}
+                  /> 
+                )}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -106,7 +160,7 @@ export default function Finals() {
 
           <div className={clsx(styles['main-streams__team-badge'], styles['main-streams__team-badge_team-bottom'])}>
             <img className={clsx(styles['main-streams__team-badge-image'], styles['main-streams__team-badge-image_team-bottom'])} src={team2?.logoLink}/>
-            { team2?.name }
+            { team2?.shortName ?? team2?.name }
           </div>
         </div>
       </section>

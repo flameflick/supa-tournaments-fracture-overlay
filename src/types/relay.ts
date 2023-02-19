@@ -68,6 +68,13 @@ export type TeamPointsPacket = {
   teams: RelayTeamWithPoints[]
 }
 
+export type FinalsPointsPacket = {
+  type: 'setFinalsPoints'
+
+  team1: number
+  team2: number
+}
+
 export type AudioPlayerPacket = {
   type: 'setAudioPlayer'
 
@@ -82,5 +89,6 @@ export type RelayPacket =
   | TeamPointsPacket
   | UserLeftRelayPacket
   | AudioPlayerPacket
+  | FinalsPointsPacket
 
 export type RelayPacketResolvers = Record<RelayPacket['type'], Function>
