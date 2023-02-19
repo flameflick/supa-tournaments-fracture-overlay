@@ -158,12 +158,6 @@
         "countryCode": "FI"
       },
       {
-        "nickname": "Pesukone22",
-        "platformId": "76561198260683373",
-        "twitchUsername": "pesukone22",
-        "countryCode": "FI"
-      },
-      {
         "nickname": "Brubrum1muri",
         "platformId": "2218632398238707",
         "twitchUsername": "brubrum1muri",
@@ -173,6 +167,12 @@
         "nickname": "Takanasi",
         "platformId": "76561198093028672",
         "twitchUsername": "takanas1",
+        "countryCode": "FI"
+      },
+      {
+        "nickname": "Pesukone22",
+        "platformId": "76561198260683373",
+        "twitchUsername": "pesukone22",
         "countryCode": "FI"
       }
     ],
